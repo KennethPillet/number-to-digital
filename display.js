@@ -1,15 +1,16 @@
 function convertToDigitalFormat(args){
     let numberArray = []
 
+    let modulo = '';
     for (const arg of args) {
-        if(arg ==  0){ 
+        if(arg == 0){ 
             numberArray.push(' _\n| |\n|_|')
         }
         if(arg ==  1){ 
             numberArray.push('\n  |\n  |') 
         }
         if(arg == 2){ 
-            numberArray.push(' _\n _|\n|_ ')
+            numberArray.push(' _\n _|\n|_')
         }
         if(arg == 3){ 
             numberArray.push('_  \n_|\n_|')
@@ -32,6 +33,11 @@ function convertToDigitalFormat(args){
         if(arg == 9){ 
             numberArray.push(' _\n|_|\n _|')
         }
+        if(arg > 9){
+            modulo = arg.split('')
+            // console.log(modulo)
+            convertToDigitalFormat(modulo);
+        }
     }
     
     numberArray.forEach(element => {
@@ -43,4 +49,4 @@ function main(){
     const args = process.argv.slice(2)
     convertToDigitalFormat(args);
 }
-main()
+main() 
